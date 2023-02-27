@@ -66,7 +66,9 @@ public class Grapple : MonoBehaviour
         // If grappling, create Line between player and grappling point
         if (selectedPoint != null)
         {
+            // Enable Line render
             lineRend.enabled = true;
+            // Draw Line from player to Grappling point
             lineRend.SetPosition(0, transform.position);
             lineRend.SetPosition(1, selectedPoint.transform.position);
         }
