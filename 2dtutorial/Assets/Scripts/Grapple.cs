@@ -7,20 +7,21 @@ public class Grapple : MonoBehaviour
     private Rigidbody2D rb;
 
     private GrapplingPoint selectedPoint;
+
     public float grappleStrength = 500f;
 
     private DistanceJoint2D distJoint;
 
     private LineRenderer lineRend;
 
-
-    // Start is called before the first frame update
     void Start()
     {
+        // Grab Components
         rb = GetComponent<Rigidbody2D>();
         distJoint = GetComponent<DistanceJoint2D>();
         lineRend = GetComponent<LineRenderer>();
 
+        // Disable distance joint, line render and make the selected point nothing
         selectedPoint = null;
         distJoint.enabled = false;
         lineRend.enabled = false;
