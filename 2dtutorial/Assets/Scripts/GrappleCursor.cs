@@ -9,7 +9,10 @@ public class GrappleCursor : MonoBehaviour
 
     void Update()
     {
+        // Get mouse position
         Vector3 mouseWorldPosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+
+        // Set Cursor Position
         mouseWorldPosition.z = 0f;
         transform.position = mouseWorldPosition;
     }
