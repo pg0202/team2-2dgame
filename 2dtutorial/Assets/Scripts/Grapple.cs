@@ -38,13 +38,13 @@ public class Grapple : MonoBehaviour
 
         // Determine which type of grappling point the object is
 
-        // 1 = Connects player to grapple point and lets them swing
+        // 0 = Connects player to grapple point and lets them swing
         if (selectedPoint.grapplingPointType == 0)
         {
             distJoint.connectedBody = selectedPoint.GetComponent<Rigidbody2D>();
             distJoint.enabled = true;
         }
-        // 2 = Propels player towards grappling point
+        // 1 = Propels player towards grappling point
         else
         {
             rb.velocity = Vector3.zero;
