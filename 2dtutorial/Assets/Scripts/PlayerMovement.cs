@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     private float Move;
 
     public float jump;
-    public bool isJumping;
+    public bool isOnGround;
 
     private Rigidbody2D rb;
 
@@ -36,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-        if (Input.GetButtonDown("Jump") && isJumping == false)
+        if (Input.GetButtonDown("Jump") && isOnGround == true)
         {
             rb.AddForce(new Vector2(rb.velocity.x, jump));
         }
@@ -46,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Ground"))
         {
-            isJumping = false;
+            isOnGround = true;
         }
     }
 
@@ -54,7 +54,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Ground"))
         {
-            isJumping = true;
+            isOnGround = false;
         }
     }
 }
