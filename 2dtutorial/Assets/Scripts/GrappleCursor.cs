@@ -24,4 +24,15 @@ public class GrappleCursor : MonoBehaviour
             Debug.Log("grapple");
         }
     }
+
+    private void OnMouseDown()
+    {
+        transform.localScale = transform.localScale / 2;
+    }
+
+
+    private void OnMouseUp()
+    {
+        transform.localScale = transform.localScale * 2;
+    }
 }
