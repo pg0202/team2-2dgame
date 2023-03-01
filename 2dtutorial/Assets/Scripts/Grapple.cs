@@ -11,7 +11,6 @@ public class Grapple : MonoBehaviour
     public float grappleStrength = 500f;
 
     private DistanceJoint2D distJoint;
-
     private LineRenderer lineRend;
 
     void Start()
@@ -57,7 +56,6 @@ public class Grapple : MonoBehaviour
     public void DeselectGrapplingPoint()
     {
         selectedPoint = null;
-
         distJoint.enabled = false;
     }
 

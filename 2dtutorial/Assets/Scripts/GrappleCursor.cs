@@ -6,6 +6,14 @@ public class GrappleCursor : MonoBehaviour
 {
     [SerializeField] private Camera mainCamera;
 
+    private Vector3 originalScale;
+
+    private void Start()
+    {
+        //Get original scale of cursor for later reference
+        originalScale = transform.localScale;
+    }
+
 
     void Update()
     {
@@ -15,6 +23,17 @@ public class GrappleCursor : MonoBehaviour
         // Set Cursor Position
         mouseWorldPosition.z = 0f;
         transform.position = mouseWorldPosition;
+
+
+        // Shrink cursor when the player is holding the left mouse button
+        if (Input.GetMouseButton(0))
+        {
+            transform.localScale = originalScale / 2;
+        }
+        else
+        {
+            transform.localScale = originalScale;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -23,16 +42,5 @@ public class GrappleCursor : MonoBehaviour
         {
             Debug.Log("grapple");
         }
-    }
-
-    private void OnMouseDown()
-    {
-        transform.localScale = transform.localScale / 2;
-    }
-
-
-    private void OnMouseUp()
-    {
-        transform.localScale = transform.localScale * 2;
     }
 }
