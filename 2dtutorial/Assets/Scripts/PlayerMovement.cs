@@ -12,13 +12,12 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody2D rb;
 
-    // Start is called before the first frame update
+    public Vector3 respawnPoint;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        respawnPoint = transform.position;
     }
-
-    // Update is called once per frame
     void Update()
     {
         Move = Input.GetAxis("Horizontal");
@@ -41,20 +40,32 @@ public class PlayerMovement : MonoBehaviour
             rb.AddForce(new Vector2(rb.velocity.x, jump));
         }
     }
-
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Ground"))
         {
             isOnGround = true;
         }
-    }
 
+        if (other.gameObject.CompareTag("Death"))
+        {
+            transform.position = respawnPoint;
+        }
+        
+    }
     private void OnCollisionExit2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Ground"))
         {
             isOnGround = false;
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Checkpoint"))
+        {
+            respawnPoint = other.gameObject.transform.position;
+            Debug.Log("YES");
         }
     }
 }

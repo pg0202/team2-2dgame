@@ -45,12 +45,22 @@ public class Grapple : MonoBehaviour
             distJoint.enabled = true;
         }
         // 1 = Propels player towards grappling point
-        else
+        else if (selectedPoint.grapplingPointType == 1)
         {
             rb.velocity = Vector3.zero;
             // Adds force, making it not normalized makes the strength of the force be proportional to the distance from the grappling point
             rb.AddForce((selectedPoint.transform.position - transform.position).normalized * grappleStrength);
         }
+        // 2 = Propels player away from grappling point
+        else if (selectedPoint.grapplingPointType == 2)
+        {
+            rb.velocity = Vector3.zero;
+            // Adds force, making it not normalized makes the strength of the force be proportional to the distance from the grappling point
+            rb.AddForce((selectedPoint.transform.position - transform.position).normalized * -grappleStrength);
+        }
+
+
+        //4 = makes distance joint really close to the grappling point - Fixed distance from swing
     }
 
     // Ungrapple from a grappling point
