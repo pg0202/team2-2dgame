@@ -48,7 +48,6 @@ public class Grapple : MonoBehaviour
         else
         {
             rb.velocity = Vector3.zero;
-            // Adds force, making it not normalized makes the strength of the force be proportional to the distance from the grappling point
             rb.AddForce((selectedPoint.transform.position - transform.position).normalized * grappleStrength);
         }
     }
