@@ -9,21 +9,21 @@ public class PauseMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Cursor.visible = false;
+        Cursor.visible = false; //Set the cursor to not visible
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape)) //Check for "Esc" button press
         {
-            if (!pauseMenu.activeSelf)
+            if (!pauseMenu.activeSelf) //If pressed make the pause menu and cursor visable while pausing all other actions
             {
                 Time.timeScale = 0f;
                 pauseMenu.SetActive(true);
                 Cursor.visible = true;
             }
-            else
+            else //If pressed again turn everyhting into false, disabling them and continuing the game
             {
                 Time.timeScale = 1f;
                 pauseMenu.SetActive(false);
@@ -37,7 +37,7 @@ public class PauseMenu : MonoBehaviour
         SceneManager.LoadScene(0); //Quits to the Main Menu.
     }
 
-    public void resume()
+    public void resume() //If pressed turn everyhting into false, disabling them and continuing the game
     {
         Time.timeScale = 1f;
         pauseMenu.SetActive(false);

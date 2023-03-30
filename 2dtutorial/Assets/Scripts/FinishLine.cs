@@ -17,7 +17,7 @@ public class FinishLine : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnCollisionEnter2D(Collision2D other) //if collision entered then load the next scene 
     {
         if (other.gameObject.CompareTag("Player"))
         {
