@@ -4,23 +4,24 @@ using UnityEngine;
 
 public class CoinScript : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public AudioClip coinPickupSound;
     void Start()
     {
-        
+
     }
 
-    // Update is called once per frame
+
     void Update()
     {
-        
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player") //Check if player has collided with the trigger and destroy the object
+        if (collision.tag == "Player")
         {
-            FindObjectOfType<CoinManagement>().CoinPickup();
+            AudioSource.PlayClipAtPoint(coinPickupSound, Camera.main.transform.position);
+            FindObjectOfType<GameManagementScript>().CoinPickup();
             Destroy(gameObject);
         }
     }
